@@ -103,7 +103,6 @@ void loop(void) {
   req = req.substring(addr_start + 1, addr_end);
   Serial.print("Request: ");
   Serial.println(req);
-  client.flush();
 
   String s;
   if (req == "/") {
@@ -118,7 +117,7 @@ void loop(void) {
     Serial.println("Sending 404");
   }
   client.print(s);
-
+  client.stop();
   Serial.println("Done with client");
 }
 
